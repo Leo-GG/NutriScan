@@ -1,0 +1,91 @@
+/* General styles for the body */
+body {
+    font-family: 'Roboto', sans-serif;  /* Use Roboto font for better readability */
+    background-color: #f0f2f6;  /* Light gray background */
+    color: #1e1e1e;  /* Dark text color */
+}
+
+/* App header styling */
+.app-header {
+    background-color: #4CAF50;  /* Green background */
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.app-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.app-header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* Content wrapper styles */
+.content-wrapper {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Section-specific backgrounds */
+.recommendations, .meal-plan {
+    background-color: #f9f9f9;
+}
+
+/* Button styling */
+.stButton > button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.stButton > button:hover {
+    background-color: #45a049;
+}
+
+/* Streamlit elements customization */
+.stRadio > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stSelectbox > div > div, .stTextInput > div > div > input {
+    background-color: white;
+}
+
+.centered-markdown {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* Custom styles for Streamlit containers */
+[data-testid="stVerticalBlock"] > [style*="flex-direction: column;"] > [data-testid="stVerticalBlock"] {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Styling for container borders and shadows */
+[data-testid="stHorizontalBlock"] [data-testid="column"] > div {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+    border: 1px solid #e0e0e0;
+}
