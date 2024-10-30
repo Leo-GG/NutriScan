@@ -139,7 +139,7 @@ def main():
     st.markdown("""
                 
                 <h2 style='text-align: center;'>Hi! We are <a href=https://www.linkedin.com/in/nuria-moreno-marín-28aa52190">Nuria</a> and 
-                <a href=https://www.linkedin.com/in/lgarma">Leo</a> and this is our entry for the
+                <a href=https://www.linkedin.com/in/lgarma">Leo</a> and this is NutriScan, our entry for the
                 <a href=https://www.datais.es/dataton-sostenibilidad">Data4Sustainability challenge 2024</a> from <a href=https://www.datais.es>Datais</a>! 
                 </h2>
                 <br>
