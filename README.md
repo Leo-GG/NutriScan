@@ -1,6 +1,8 @@
 # NutriScan: AI-Powered Dietary Analysis App
 
-NutriScan is an interactive web application developed in Python using the Streamlit framework. It helps users analyze their dietary nutrient intake and provides personalized recommendations for a balanced diet. The app leverages Large Language Models through the Groq API for diet analysis and meal planning. This project was developed by Leonardo Garma and Nuria Moreno as an entry for the [Data4Sustainability challenge 2024](https://www.datais.es/dataton-sostenibilidad).
+NutriScan is an interactive web application developed in Python using the Streamlit framework. It helps users analyze their dietary nutrient intake and provides personalized recommendations for a balanced diet. The app leverages Large Language Models through the Groq API for diet analysis and meal planning. 
+
+This project was developed by Leonardo Garma and Nuria Moreno as an entry for the [Data4Sustainability challenge 2024](https://www.datais.es/dataton-sostenibilidad).
 
 ## Features
 
