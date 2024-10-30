@@ -6,4 +6,3 @@ langchain-groq>=0.0.6
 langchain-core>=0.1.27
 python-dotenv>=1.0.1
 streamlit-extras>=0.4.0
-sqlite3==0.5.3
