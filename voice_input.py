@@ -1,10 +1,8 @@
 import streamlit as st
 import speech_recognition as sr
-from deep_translator import GoogleTranslator
 
 def get_voice_input():
     r = sr.Recognizer()
-    translator = GoogleTranslator(source='es', target='en')
     with sr.Microphone() as source:
         st.write("Escuchando... Habla ahora.")  # "Listening... Speak now." in Spanish
         audio = r.listen(source)
