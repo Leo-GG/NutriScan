@@ -1,4 +1,8 @@
 import pandas as pd
+import os
+
+# Define data directory path
+DATA_DIR = "data"
 
 def load_reference_values():
     """
@@ -9,7 +13,7 @@ def load_reference_values():
         - Dictionary mapping nutrient names to reference values
         - DataFrame containing full reference data
     """
-    reference_df = pd.read_csv('Indicators_brief.csv')
+    reference_df = pd.read_csv(os.path.join(DATA_DIR, 'Indicators_brief.csv'))
     return dict(zip(reference_df['Indicator'], reference_df['Value'])), reference_df
 
 def load_faostat_data():
@@ -19,7 +23,7 @@ def load_faostat_data():
     Returns:
         pd.DataFrame: Processed FAOSTAT data with cleaned survey names
     """
-    faostat_df = pd.read_csv('FAOSTAT_total_intakes.csv')
+    faostat_df = pd.read_csv(os.path.join(DATA_DIR, 'FAOSTAT_total_intakes.csv'))
     # Clean survey names by removing text after dash
     faostat_df['Survey'] = [i.split(' -')[0] for i in faostat_df['Survey'].values]
     return faostat_df

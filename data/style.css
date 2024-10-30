@@ -34,11 +34,6 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Section-specific backgrounds */
-.recommendations, .meal-plan {
-    background-color: #f9f9f9;
-}
-
 /* Button styling */
 .stButton > button {
     background-color: #4CAF50;
@@ -64,28 +59,3 @@ body {
     background-color: white;
 }
 
-.centered-markdown {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem 0;
-}
-
-/* Custom styles for Streamlit containers */
-[data-testid="stVerticalBlock"] > [style*="flex-direction: column;"] > [data-testid="stVerticalBlock"] {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-}
-
-/* Styling for container borders and shadows */
-[data-testid="stHorizontalBlock"] [data-testid="column"] > div {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-    margin-bottom: 2rem;
-    border: 1px solid #e0e0e0;
-}

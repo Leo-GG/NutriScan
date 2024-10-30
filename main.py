@@ -6,7 +6,7 @@ from langchain_groq import ChatGroq  # Groq LLM integration
 from langchain_core.prompts import SystemMessagePromptTemplate, HumanMessagePromptTemplate, ChatPromptTemplate  # LLM prompt templates
 from langchain_core.output_parsers import StrOutputParser  # Parse LLM output
 # Import custom modules
-from diet_database import get_nutrient_sources, create_nutrient_sources_table  # Database operations
+from diet_database import get_nutrient_sources  # Database operations
 from data_loader import load_reference_values, load_faostat_data, get_faostat_profile  # Data loading utilities
 from nutrient_analysis import calculate_results, get_food_recommendations  # Analysis functions
 from ui_components import display_results, display_recommendations  # UI components
@@ -43,9 +43,12 @@ CONTAINER_STYLE_WITH_CHILDREN = CONTAINER_STYLE + """
     }
 """
 
+# Define data directory path
+DATA_DIR = "data"
+
 # Function to load custom CSS
 def local_css(file_name):
-    with open(file_name, "r") as f:
+    with open(os.path.join("data", file_name), "r") as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Load necessary data at startup
@@ -53,8 +56,8 @@ reference_values, reference_df = load_reference_values()  # Load nutrient refere
 faostat_df = load_faostat_data()  # Load FAOSTAT dietary data
 
 # Initialize database
-create_nutrient_sources_table()  # Create table if not exists
-nutrient_sources = get_nutrient_sources()  # Get nutrient sources data
+#create_nutrient_sources_table(os.path.join(DATA_DIR, "nutrient_sources.db"))  # Pass the new path
+nutrient_sources = get_nutrient_sources(os.path.join(DATA_DIR, "nutrient_sources.db"))  # Pass the new path
 
 # Load environment variables
 load_dotenv()
