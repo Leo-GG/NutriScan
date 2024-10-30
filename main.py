@@ -17,6 +17,7 @@ from dotenv import load_dotenv  # Environment variable management
 import os
 # Import required for image handling
 from PIL import Image
+from typing import Dict
 
 # Define common container style
 CONTAINER_STYLE = """
@@ -64,6 +65,11 @@ nutrient_sources = get_nutrient_sources(os.path.join(DATA_DIR, "nutrient_sources
 # Load environment variables
 load_dotenv()
 
+# Verify API key is loaded
+if not os.getenv("GROQ_API_KEY"):
+    st.error("GROQ_API_KEY not found in environment variables. Please check your .env file.")
+    st.stop()
+
 # Initialize the LLM model
 model = ChatGroq(
     api_key=os.getenv("GROQ_API_KEY"),
@@ -86,6 +92,20 @@ system_message = SystemMessagePromptTemplate.from_template(f"""You are given a l
 
 # Get list of all countries from pycountry
 all_countries = [country.name for country in pycountry.countries]
+
+# Define language codes
+LANGUAGE_CODES: Dict[str, str] = {
+    "English": "en-US",
+    "Spanish": "es-ES",
+    "French": "fr-FR",
+    "German": "de-DE",
+    "Italian": "it-IT",
+    "Portuguese": "pt-PT",
+    "Chinese": "zh-CN",
+    "Japanese": "ja-JP",
+    "Korean": "ko-KR",
+    "Russian": "ru-RU"
+}
 
 # Function to generate LLM response
 def generate_response(chat_history):
@@ -330,26 +350,33 @@ def main():
                 with st.form("llm_form"):
                     text = st.text_area("Describe your diet:")
                     use_voice = st.checkbox("Use voice input")
+                    
+                    #if use_voice:
+                    selected_language = st.selectbox(
+                        "Select voice input language:",
+                        options=list(LANGUAGE_CODES.keys()),
+                        index=0
+                    )
+                    
                     estimate_submitted = st.form_submit_button("Estimate Nutrient Content")
                 
                 if estimate_submitted:
                     if use_voice:
-                        text = get_voice_input()
+                        text, success = get_voice_input(LANGUAGE_CODES[selected_language])
+                        if not success:
+                            st.error(text)  # Display error message
+                            return
+                        
                     if text:
                         with st.spinner("Estimating nutrient content..."):
                             prompt = HumanMessagePromptTemplate.from_template(text)
                             chat_history = [system_message, prompt]
                             response = generate_response(chat_history)
                             st.session_state.chat_history.append({'user': text, 'assistant': response})
-                            # Debug output
-                            # st.write(response)
                             intakes = parse_response(response)
                             if intakes:
                                 st.session_state.estimated_intakes = intakes
                                 st.success("Nutrient content estimated successfully!")
-
-                                # Debug output
-                                #st.write("Estimated intakes:", intakes)
                             else:
                                 st.error("Failed to estimate nutrient content. Please try again.")
                                 return

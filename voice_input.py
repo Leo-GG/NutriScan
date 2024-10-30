@@ -1,19 +1,36 @@
-import streamlit as st
 import speech_recognition as sr
+from typing import Tuple
 
-def get_voice_input():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        st.write("Escuchando... Habla ahora.")  # "Listening... Speak now." in Spanish
-        audio = r.listen(source)
-        st.write("Procesando el habla...")  # "Processing speech..." in Spanish
+def get_voice_input(language: str = 'es-ES') -> Tuple[str, bool]:
+    """
+    Record and transcribe voice input in the specified language
+    
+    Args:
+        language: Language code for speech recognition (e.g., 'en-US', 'es-ES')
+    
+    Returns:
+        Tuple[str, bool]: Transcribed text and success status
+    """
+    # Initialize recognizer
+    recognizer = sr.Recognizer()
+    
     try:
-        text = r.recognize_google(audio, language="es-ES")
-        st.write(f"Texto reconocido (español): {text}")
-        return text
-    except sr.UnknownValueError:
-        st.error("Lo siento, no pude entender eso.")  # "Sorry, I couldn't understand that." in Spanish
-        return None
-    except sr.RequestError:
-        st.error("Lo siento, hubo un error con el servicio de reconocimiento de voz.")  # Error message in Spanish
-        return None
+        # Use microphone as source
+        with sr.Microphone() as source:
+            print("Adjusting for ambient noise...")
+            recognizer.adjust_for_ambient_noise(source, duration=1)
+            
+            print("Listening...")
+            audio = recognizer.listen(source, timeout=5)
+            
+            try:
+                # Attempt to recognize speech using Google's speech recognition
+                text = recognizer.recognize_google(audio, language=language)
+                return text, True
+            except sr.UnknownValueError:
+                return "Could not understand audio", False
+            except sr.RequestError as e:
+                return f"Could not request results; {e}", False
+                
+    except Exception as e:
+        return f"Error accessing microphone: {e}", False

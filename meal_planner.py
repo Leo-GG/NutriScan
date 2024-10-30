@@ -1,7 +1,11 @@
+from dotenv import load_dotenv
 from langchain_groq import ChatGroq  # Groq LLM integration
 from langchain_core.prompts import SystemMessagePromptTemplate, HumanMessagePromptTemplate, ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import os
+
+# Load environment variables
+load_dotenv()
 
 meal_planner_model = ChatGroq(
     api_key=os.getenv("GROQ_API_KEY"),
