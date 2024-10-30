@@ -350,8 +350,7 @@ def main():
                 with st.form("llm_form"):
                     text = st.text_area("Describe your diet:")
                     use_voice = st.checkbox("Use voice input")
-                    
-                    #if use_voice:
+                    st.write("Voice input is currently not supported on the Streamlit Community Cloud version. Please run the app locally to use this feature.")
                     selected_language = st.selectbox(
                         "Select voice input language:",
                         options=list(LANGUAGE_CODES.keys()),
