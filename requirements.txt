@@ -7,3 +7,4 @@ langchain-core>=0.1.27
 python-dotenv>=1.0.1
 streamlit-extras>=0.4.0
 speechrecognition>=3.10.0
+Pillow>=10.0.0

@@ -15,6 +15,8 @@ from voice_input import get_voice_input  # Voice input processing
 from streamlit_extras.stylable_container import stylable_container  # Styled containers
 from dotenv import load_dotenv  # Environment variable management
 import os
+# Import required for image handling
+from PIL import Image
 
 # Define common container style
 CONTAINER_STYLE = """
@@ -136,13 +138,33 @@ def main():
     # Display app introduction and description
     st.markdown("""
                 
-                <h2 style='text-align: center;'>Hi! We are <a href=https://www.linkedin.com/in/nuriamartinezgarcia">Nuria</a> and 
+                <h2 style='text-align: center;'>Hi! We are <a href=https://www.linkedin.com/in/nuria-moreno-marín-28aa52190">Nuria</a> and 
                 <a href=https://www.linkedin.com/in/lgarma">Leo</a> and this is our entry for the
-                <a href=https://www.datais.es/dataton-sostenibilidad">Data4Sustainability challenge 2024</a>! 
+                <a href=https://www.datais.es/dataton-sostenibilidad">Data4Sustainability challenge 2024</a> from <a href=https://www.datais.es>Datais</a>! 
                 </h2>
                 <br>
                 <br>
+""", unsafe_allow_html=True)
+    
+    col1, col_photo1,col3, col_photo2, col5 = st.columns(5)
 
+    with col_photo1:
+        try:
+            image = Image.open('data/Nuria.png')
+            st.image(image, width=200, use_column_width=True, caption="Nuria Moreno")
+            st.markdown('</div>', unsafe_allow_html=True)
+        except Exception as e:
+            st.error(f"Could not load image: {e}")
+
+    with col_photo2:
+        try:
+            image = Image.open('data/Leo.png')
+            st.image(image, width=200, use_column_width=True, caption="Leonardo Garma")
+            st.markdown('</div>', unsafe_allow_html=True)
+        except Exception as e:
+            st.error(f"Could not load image: {e}")
+
+    st.markdown("""
                 <h3 style='text-align: justify;'>We are a team of 2 spanish scientists passionate 
                 about using data to make a positive impact. We decided to join forces to tackle challenge #3
                 by developing <b>NutriScan</b>, an AI-powered app that estimates and analyzes nutrient intakes and makes personalized 
