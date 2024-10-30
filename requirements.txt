@@ -8,4 +8,4 @@ python-dotenv>=1.0.1
 streamlit-extras>=0.4.0
 speechrecognition>=3.10.0
 Pillow>=10.0.0
-pyaudio>=0.2.13
+#pyaudio>=0.2.13
