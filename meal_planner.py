@@ -1,8 +1,13 @@
-from langchain_ollama import ChatOllama
+from langchain_groq import ChatGroq  # Groq LLM integration
 from langchain_core.prompts import SystemMessagePromptTemplate, HumanMessagePromptTemplate, ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+import os
 
-meal_planner_model = ChatOllama(model="llama3.2", base_url="http://localhost:11434/", temperature=0.2)
+meal_planner_model = ChatGroq(
+    api_key=os.getenv("GROQ_API_KEY"),
+    model_name='llama-3.2-90b-text-preview',
+    temperature=0.2  # Set to 0 for deterministic outputs
+)
 
 meal_planner_system_message = SystemMessagePromptTemplate.from_template("""You are a nutritionist and meal planner. 
 Given a detailed analysis of a person's nutrient intake, you will create a meal plan for a week with 3 meals per day. 
