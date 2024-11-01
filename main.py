@@ -348,7 +348,7 @@ def main():
                     submitted = st.form_submit_button("Analyze Diet")
             elif input_method == "LLM Estimation":
                 with st.form("llm_form"):
-                    text = st.text_area("Describe your diet:")
+                    text = st.text_area(label="Describe your diet:", placeholder='e.g. "I ate 2 eggs, a grilled chicken breast and a bowl of rice"')
                     use_voice = st.checkbox("Use voice input")
                     st.write("Voice input is currently not supported on the Streamlit Community Cloud version. Please run the app locally to use this feature.")
                     selected_language = st.selectbox(
