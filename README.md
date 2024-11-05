@@ -2,7 +2,12 @@
 
 NutriScan is an interactive web application developed in Python using the Streamlit framework. It helps users analyze their dietary nutrient intake and provides personalized recommendations for a balanced diet. The app leverages Large Language Models through the Groq API for diet analysis and meal planning. 
 
-[Try the app here!](https://nutriscanapp.streamlit.app/)
+<div align="center">
+    <h1>
+        <a href="https://nutriscanapp.streamlit.app/">🚀 Try the app here! 🚀</a>
+    </h1>
+</div>
+
 
 This project was developed by Leonardo Garma and Nuria Moreno as an entry for the [Data4Sustainability challenge 2024](https://www.datais.es/dataton-sostenibilidad).
 
@@ -135,7 +140,7 @@ If you encounter issues during installation:
 ## Authors
 
 - [Leonardo Garma](https://www.linkedin.com/in/lgarma) 
-- [Nuria Moreno](https://www.linkedin.com/in/nuria-moreno-marín-28aa52190) -
+- [Nuria Moreno](https://www.linkedin.com/in/nuria-moreno-marín-28aa52190)
 
 ## License
 
