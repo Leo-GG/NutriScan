@@ -200,7 +200,7 @@ def main():
         ):  # Use stylable_container for the input section
             st.subheader("Diet Input")
             
-            input_method = st.radio("Choose input method:", ("FAOSTAT Data Profiles", "LLM Estimation", "Manual"), horizontal=True)
+            input_method = st.radio("Choose input method:", ("LLM Estimation", "FAOSTAT Data Profiles", "Manual"), horizontal=True)
             
             if input_method == "FAOSTAT Data Profiles":
                 countries = faostat_df['Survey'].unique()
