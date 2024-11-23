@@ -154,106 +154,6 @@ def main():
     # Configure the page
     st.set_page_config(layout="wide", page_title="NutriScan", page_icon="🍽️")
     local_css("style.css")
-
-    # Display app introduction and description
-    st.markdown("""
-                
-                <h2 style='text-align: center;'>Hi! We are <a href=https://www.linkedin.com/in/nuria-moreno-marín-28aa52190">Nuria</a> and 
-                <a href=https://www.linkedin.com/in/lgarma">Leo</a> and this is NutriScan, our entry for the
-                <a href=https://www.datais.es/dataton-sostenibilidad">Data4Sustainability challenge 2024</a> from <a href=https://www.datais.es>Datais</a>! 
-                </h2>
-                <br>
-                <br>
-""", unsafe_allow_html=True)
-    
-    col1, col_photo1,col3, col_photo2, col5 = st.columns(5)
-
-    with col_photo1:
-        try:
-            image = Image.open('data/Nuria.png')
-            st.image(image, width=200, use_column_width=True, caption="Nuria Moreno")
-            st.markdown('</div>', unsafe_allow_html=True)
-        except Exception as e:
-            st.error(f"Could not load image: {e}")
-
-    with col_photo2:
-        try:
-            image = Image.open('data/Leo.png')
-            st.image(image, width=200, use_column_width=True, caption="Leonardo Garma")
-            st.markdown('</div>', unsafe_allow_html=True)
-        except Exception as e:
-            st.error(f"Could not load image: {e}")
-
-    st.markdown("""
-                <h3 style='text-align: justify;'>We are a team of 2 spanish scientists passionate 
-                about using data to make a positive impact. We decided to join forces to tackle challenge #3
-                by developing <b>NutriScan</b>, an AI-powered app that estimates and analyzes nutrient intakes and makes personalized 
-                recommendations for a balanced diet.</h3>
-                <br>
-                <br>
-                <h2 style='text-align: center;'>Our app consists of 3 main parts</h2>
-                <br>
-                <br>
-                """, unsafe_allow_html=True)
-
-    # Create three columns for app features description
-    col_left, col_middle, col_right = st.columns([0.3,0.3, 0.3])
-    
-    # Display feature descriptions in columns
-    with col_left:
-        with stylable_container(
-                key="container_with_border",
-                css_styles=CONTAINER_STYLE
-            ):
-            st.markdown("""
-                <h2 style='text-align: center;'>Diet Estimation</h2>
-                <h4 style='text-align: justify;'>You can use our app to estimate the nutrient content of a diet
-                by either using FAOSTAT data or describing your diet using text or voice input to an LLM.</h4>
-                <br>
-                <h4 style='text-align: justify;'>And of course you can input or modify any of the values manually.</h4>
-                <br>
-                <br>
-            """, unsafe_allow_html=True)
-    with col_middle:
-        with stylable_container(
-                key="container_with_border",
-                css_styles=CONTAINER_STYLE
-            ):
-            st.markdown("""
-                <h2 style='text-align: center;'>Diet Analysis</h2>
-                <h4 style='text-align: justify;'>Once you have estimated the nutrient content of your diet, you can 
-                analyze it by comparing it to recommended values to detect any deficiencies or excesses.</h4>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-            """, unsafe_allow_html=True)
-
-    with col_right:
-        with stylable_container(
-                key="container_with_border",
-                css_styles=CONTAINER_STYLE
-            ):
-            st.markdown("""
-                <h2 style='text-align: center;'>Recommendations</h2>
-                <h4 style='text-align: justify;'>After the analysis, you can get personalized recommendations 
-                to balance your diet.</h4>
-                <br>
-                <h4 style='text-align: justify;'>You can generate a weekly meal plan, which addresses the deficiencies 
-                and excesses detected and takes into account the country you live in.</h4>
-                <br>
-                <br>
-            """, unsafe_allow_html=True)
-
-    st.markdown("""
-                <br>
-                <br>
-                <h2 style='text-align: center;'>Have fun testing it!</h2>
-                <br>
-                <br>
-                """, unsafe_allow_html=True)
     
     with stylable_container(
         key="app-title",
@@ -271,6 +171,7 @@ def main():
         st.markdown("""
             <h1>🍽️ NutriScan App</h1>
             <p>Analyze your diet and get personalized recommendations</p>
+            <p><a href="#about-h1" style="color: white;">Learn more about NutriScan ↓</a></p>
         """, unsafe_allow_html=True)
     
     # Initialize session state variables if they don't exist
@@ -442,6 +343,113 @@ def main():
                     st.error("Failed to generate meal plan. Please try again.")
                 st.markdown('</div>', unsafe_allow_html=True)
 
+# About section
+    st.markdown("""
+                <br>
+                <br>
+                <h1 id="about-nutriscan" style='text-align: center;'>About NutriScan</h1>
+                <br>
+                <br>
+                """, unsafe_allow_html=True)
+    # Display app introduction and description
+    st.markdown("""
+                
+                <h2 style='text-align: center;'>Hi! We are <a href=https://www.linkedin.com/in/nuria-moreno-marín-28aa52190">Nuria</a> and 
+                <a href=https://www.linkedin.com/in/lgarma">Leo</a> and this is NutriScan, our entry for the
+                <a href=https://www.datais.es/dataton-sostenibilidad">Data4Sustainability challenge 2024</a> from <a href=https://www.datais.es>Datais</a>! 
+                </h2>
+                <br>
+                <br>
+""", unsafe_allow_html=True)
+    
+    col1, col_photo1,col3, col_photo2, col5 = st.columns(5)
+
+    with col_photo1:
+        try:
+            image = Image.open('data/Nuria.png')
+            st.image(image, width=200, use_column_width=True, caption="Nuria Moreno")
+            st.markdown('</div>', unsafe_allow_html=True)
+        except Exception as e:
+            st.error(f"Could not load image: {e}")
+
+    with col_photo2:
+        try:
+            image = Image.open('data/Leo.png')
+            st.image(image, width=200, use_column_width=True, caption="Leonardo Garma")
+            st.markdown('</div>', unsafe_allow_html=True)
+        except Exception as e:
+            st.error(f"Could not load image: {e}")
+
+    st.markdown("""
+                <h3 style='text-align: justify;'>We are a team of 2 spanish scientists passionate 
+                about using data to make a positive impact. We decided to join forces to tackle challenge #3
+                by developing <b>NutriScan</b>, an AI-powered app that estimates and analyzes nutrient intakes and makes personalized 
+                recommendations for a balanced diet.</h3>
+                <br>
+                <br>
+                <h2 style='text-align: center;'>Our app consists of 3 main parts</h2>
+                <br>
+                <br>
+                """, unsafe_allow_html=True)
+
+    # Create three columns for app features description
+    col_left, col_middle, col_right = st.columns([0.3,0.3, 0.3])
+    
+    # Display feature descriptions in columns
+    with col_left:
+        with stylable_container(
+                key="container_with_border",
+                css_styles=CONTAINER_STYLE
+            ):
+            st.markdown("""
+                <h2 style='text-align: center;'>Diet Estimation</h2>
+                <h4 style='text-align: justify;'>You can use our app to estimate the nutrient content of a diet
+                by either using FAOSTAT data or describing your diet using text or voice input to an LLM.</h4>
+                <br>
+                <h4 style='text-align: justify;'>And of course you can input or modify any of the values manually.</h4>
+                <br>
+                <br>
+            """, unsafe_allow_html=True)
+    with col_middle:
+        with stylable_container(
+                key="container_with_border",
+                css_styles=CONTAINER_STYLE
+            ):
+            st.markdown("""
+                <h2 style='text-align: center;'>Diet Analysis</h2>
+                <h4 style='text-align: justify;'>Once you have estimated the nutrient content of your diet, you can 
+                analyze it by comparing it to recommended values to detect any deficiencies or excesses.</h4>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            """, unsafe_allow_html=True)
+
+    with col_right:
+        with stylable_container(
+                key="container_with_border",
+                css_styles=CONTAINER_STYLE
+            ):
+            st.markdown("""
+                <h2 style='text-align: center;'>Recommendations</h2>
+                <h4 style='text-align: justify;'>After the analysis, you can get personalized recommendations 
+                to balance your diet.</h4>
+                <br>
+                <h4 style='text-align: justify;'>You can generate a weekly meal plan, which addresses the deficiencies 
+                and excesses detected and takes into account the country you live in.</h4>
+                <br>
+                <br>
+            """, unsafe_allow_html=True)
+
+    st.markdown("""
+                <br>
+                <br>
+                <h2 style='text-align: center;'>Have fun testing it!</h2>
+                <br>
+                <br>
+                """, unsafe_allow_html=True)
 # Entry point
 if __name__ == "__main__":
     main()
