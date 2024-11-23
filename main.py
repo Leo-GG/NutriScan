@@ -73,7 +73,7 @@ if not os.getenv("GROQ_API_KEY"):
 # Initialize the LLM model
 model = ChatGroq(
     api_key=os.getenv("GROQ_API_KEY"),
-    model_name='llama-3.2-90b-text-preview',
+    model_name='llama-3.1-70b-versatile',#'llama-3.2-90b-text-preview',
     temperature=0.0  # Set to 0 for deterministic outputs
 )
 
