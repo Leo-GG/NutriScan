@@ -171,7 +171,7 @@ def main():
         st.markdown("""
             <h1>🍽️ NutriScan App</h1>
             <p>Analyze your diet and get personalized recommendations</p>
-            <p><a href="#about-h1" style="color: white;">Learn more about NutriScan ↓</a></p>
+            <p><a href="#about-nutriscan" style="color: white;">Learn more about NutriScan ↓</a></p>
         """, unsafe_allow_html=True)
     
     # Initialize session state variables if they don't exist
